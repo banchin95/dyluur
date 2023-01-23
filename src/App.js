@@ -1,19 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import HomeScreen from './components/Home';
+import * as React from "react";
+import {Routes, Route, Outlet, BrowserRouter} from "react-router-dom";
+import HomeScreen from './components/Home'
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <Link to="/Home"></Link>
-        </nav>
-
-        <Route path="/Home" exact component={HomeScreen} />
-      </div>
-    </Router>
-  );
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Outlet/>}>
+                    <Route index element={<HomeScreen/>}/>
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
-
-export default App;
